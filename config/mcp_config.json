@@ -1,0 +1,43 @@
+{
+  "mcp": {
+    "servers": {
+      "protocols": {
+        "command": "python",
+        "args": ["mcp-protocols-server/mcp_protocols_server.py"],
+        "env": {
+          "PYTHONPATH": "mcp-shared-core"
+        }
+      },
+      "it-knowledge": {
+        "command": "python", 
+        "args": ["mcp-it-knowledge-server/mcp_it_server.py"],
+        "env": {
+          "PYTHONPATH": "mcp-shared-core"
+        }
+      },
+      "coding-guidelines": {
+        "command": "python",
+        "args": ["mcp-coding-guidelines-server/mcp_coding_server.py"],
+        "env": {
+          "PYTHONPATH": "mcp-shared-core"
+        }
+      }
+    }
+  },
+  "http": {
+    "servers": {
+      "protocols": {
+        "type": "sse",
+        "url": "http://localhost:8001/mcp/sse"
+      },
+      "it-knowledge": {
+        "type": "sse", 
+        "url": "http://localhost:8002/mcp/sse"
+      },
+      "coding-guidelines": {
+        "type": "sse",
+        "url": "http://localhost:8003/mcp/sse"
+      }
+    }
+  }
+}

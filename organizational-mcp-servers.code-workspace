@@ -1,0 +1,171 @@
+{
+    "folders": [
+        {
+            "name": "🏢 Organizational MCP Servers",
+            "path": "."
+        },
+        {
+            "name": "🔧 Shared Core",
+            "path": "./mcp-shared-core"
+        },
+        {
+            "name": "🌐 Protocol Server",
+            "path": "./mcp-protocols-server"
+        },
+        {
+            "name": "💻 IT Knowledge Server",
+            "path": "./mcp-it-knowledge-server"
+        },
+        {
+            "name": "📝 Coding Guidelines Server",
+            "path": "./mcp-coding-guidelines-server"
+        },
+        {
+            "name": "🔍 Discovery Service",
+            "path": "./mcp-discovery-service"
+        },
+        {
+            "name": "📊 Admin Dashboard",
+            "path": "./mcp-admin-dashboard"
+        }
+    ],
+    "settings": {
+        "python.defaultInterpreterPath": "./.venv/Scripts/python.exe",
+        "python.terminal.activateEnvironment": true,
+        "python.linting.enabled": true,
+        "python.linting.pylintEnabled": true,
+        "python.formatting.provider": "black",
+        "files.exclude": {
+            "**/__pycache__": true,
+            "**/*.pyc": true,
+            ".venv": false
+        },
+        "search.exclude": {
+            "**/node_modules": true,
+            "**/bower_components": true,
+            "**/*.code-search": true,
+            ".venv": true,
+            "**/data": true,
+            "**/logs": true
+        },
+        "terminal.integrated.cwd": ".",
+        "files.associations": {
+            "*.md": "markdown"
+        }
+    },
+    "extensions": {
+        "recommendations": [
+            "ms-python.python",
+            "ms-python.black-formatter",
+            "ms-python.pylint",
+            "ms-vscode.vscode-json",
+            "redhat.vscode-yaml",
+            "ms-vscode.vscode-markdown",
+            "github.copilot",
+            "github.copilot-chat"
+        ]
+    },
+    "launch": {
+        "version": "0.2.0",
+        "configurations": [
+            {
+                "name": "🌐 Start Protocol Server",
+                "type": "python",
+                "request": "launch",
+                "program": "${workspaceFolder}/mcp-protocols-server/mcp_protocols_server.py",
+                "console": "integratedTerminal",
+                "cwd": "${workspaceFolder}/mcp-protocols-server"
+            },
+            {
+                "name": "🧪 Test Protocol Server",
+                "type": "python",
+                "request": "launch",
+                "program": "${workspaceFolder}/mcp-protocols-server/test_protocols_server.py",
+                "console": "integratedTerminal",
+                "cwd": "${workspaceFolder}/mcp-protocols-server"
+            },
+            {
+                "name": "💻 Start IT Knowledge Server",
+                "type": "python",
+                "request": "launch",
+                "program": "${workspaceFolder}/mcp-it-knowledge-server/mcp_it_server.py",
+                "console": "integratedTerminal",
+                "cwd": "${workspaceFolder}/mcp-it-knowledge-server"
+            },
+            {
+                "name": "📝 Start Coding Guidelines Server",
+                "type": "python",
+                "request": "launch",
+                "program": "${workspaceFolder}/mcp-coding-guidelines-server/mcp_coding_server.py",
+                "console": "integratedTerminal",
+                "cwd": "${workspaceFolder}/mcp-coding-guidelines-server"
+            }
+        ]
+    },
+    "tasks": {
+        "version": "2.0.0",
+        "tasks": [
+            {
+                "label": "🚀 Setup Environment",
+                "type": "shell",
+                "command": "python",
+                "args": ["-m", "venv", ".venv"],
+                "group": "build",
+                "presentation": {
+                    "echo": true,
+                    "reveal": "always",
+                    "focus": false,
+                    "panel": "shared"
+                },
+                "problemMatcher": []
+            },
+            {
+                "label": "📦 Install Dependencies",
+                "type": "shell",
+                "command": "pip",
+                "args": ["install", "-r", "requirements.txt"],
+                "group": "build",
+                "dependsOn": "🚀 Setup Environment",
+                "presentation": {
+                    "echo": true,
+                    "reveal": "always",
+                    "focus": false,
+                    "panel": "shared"
+                },
+                "problemMatcher": []
+            },
+            {
+                "label": "🌐 Start Protocol Server",
+                "type": "shell",
+                "command": "python",
+                "args": ["mcp_protocols_server.py"],
+                "options": {
+                    "cwd": "${workspaceFolder}/mcp-protocols-server"
+                },
+                "group": "test",
+                "presentation": {
+                    "echo": true,
+                    "reveal": "always",
+                    "focus": false,
+                    "panel": "new"
+                },
+                "problemMatcher": [],
+                "isBackground": true
+            },
+            {
+                "label": "🧪 Test All Servers",
+                "type": "shell",
+                "command": "python",
+                "args": ["-m", "pytest", "tests/", "-v"],
+                "group": "test",
+                "presentation": {
+                    "echo": true,
+                    "reveal": "always",
+                    "focus": false,
+                    "panel": "shared"
+                },
+                "problemMatcher": []
+            }
+        ]
+    }
+}

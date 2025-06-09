@@ -1,0 +1,23 @@
+# Web framework and HTTP handling
+fastapi>=0.115.0
+uvicorn[standard]>=0.30.0
+python-multipart>=0.0.6
+aiohttp>=3.9.0
+requests>=2.32.0
+
+# Document processing
+PyMuPDF>=1.23.0
+sentence-transformers>=3.0.0
+chromadb>=0.5.0
+langchain>=0.1.0
+langchain-community>=0.1.0
+
+# Data processing and utilities
+pandas>=2.0.0
+numpy>=1.24.0
+
+# Development and testing
+pytest>=7.0.0
+pytest-asyncio>=0.23.0
+black>=23.0.0
+pylint>=2.17.0

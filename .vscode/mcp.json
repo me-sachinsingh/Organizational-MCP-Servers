@@ -1,0 +1,22 @@
+{
+    "mcpServers": {
+        "protocol-knowledge": {
+            "command": "python",
+            "args": ["mcp_protocols_server.py"],
+            "cwd": "./mcp-protocols-server",
+            "env": {}
+        },
+        "it-knowledge": {
+            "command": "python", 
+            "args": ["mcp_it_server.py"],
+            "cwd": "./mcp-it-knowledge-server",
+            "env": {}
+        },
+        "coding-guidelines": {
+            "command": "python",
+            "args": ["mcp_coding_server.py"], 
+            "cwd": "./mcp-coding-guidelines-server",
+            "env": {}
+        }
+    }
+}
